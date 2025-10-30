@@ -26,7 +26,7 @@ public class BlnCtrl : MonoBehaviour
             sr.sprite = cSprite;
             
         }
-        else if (Input.GetKeyUp(KeyCode.W))
+        else
         {
             // W키를 떼면 기본 이미지로 복귀
             sr.sprite = dSprite;

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 65876482049383378}
   - component: {fileID: 8254564448710141579}
   - component: {fileID: 8973274008479709410}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: bomb1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 3419590407312014251}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.52, y: 7.23, z: 0}
+  m_LocalPosition: {x: -15.506, y: 7.23, z: 0}
   m_LocalScale: {x: 0.13577197, y: 0.13577197, z: 0.13577197}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -76,13 +76,13 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 1b4771e7b492add4cb4da2d49331c465, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 4.08, y: 6.11}
+  m_Size: {x: 4.09, y: 6.11}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -134,7 +134,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!70 &8254564448710141579
 CapsuleCollider2D:
@@ -165,11 +165,11 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 4.08, y: 6.11}
+  m_Offset: {x: -0.3202181, y: -1.0149999}
+  m_Size: {x: 3.4395633, y: 4.08}
   m_Direction: 0
 --- !u!114 &8973274008479709410
 MonoBehaviour:
@@ -184,3 +184,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifetime: 5
+  expFab: {fileID: 538078426911957470, guid: d3647d39ed4c5bb4d9528efde78df78f, type: 3}

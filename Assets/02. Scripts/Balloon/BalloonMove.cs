@@ -52,6 +52,23 @@ public class BalloonMove : MonoBehaviour
         }
     }
 
+    void OnCollisionStay2D(Collision2D coll)
+    {
+
+        if (Input.GetKey(KeyCode.W)) //상승중이면 지면충돌보다 우선
+        {
+            return; //ascend()가 작동하도록 이 로직을 나감
+        }
+
+        if (coll.gameObject.CompareTag("Ground")) //충돌할 오브젝트가 그라운드 태그를 가지고 있다면
+        {
+            if (rb.velocity.y < 0) //하강속도를 멈추고 지면에 고정 
+            {
+                rb.velocity = new Vector2(rb.velocity.x, 0f);
+            }
+        }
+
+    }
     void CheckHeightLimits() // 높이 제한을 확인하고 강제로 조정하는 역할 
     {
         Vector3 currentPosition = transform.position;
