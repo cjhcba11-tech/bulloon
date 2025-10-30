@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class BlnCtrl : MonoBehaviour
 {
-    // 1. 일반 상태 스프라이트
-    public Sprite dSprite;
-    // 2. 충전 상태 스프라이트
-    public Sprite cSprite;
+    
+    [Tooltip("벌룬 일반적인 상태")] public Sprite dSprite;
+    [Tooltip("벌룬 떠오르는 상태")] public Sprite cSprite;
 
     private SpriteRenderer sr;
 

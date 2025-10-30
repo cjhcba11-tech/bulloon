@@ -6,18 +6,19 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [Header("발사")]
-    public GameObject bPre; //총알 프리팹
-    public float bSpeed = 8f; //총알 속도
-    public float fireRate = 0.5f; //발사 간격
+    [Tooltip("적 총알 프리팹")] public GameObject bPre;
+    [Tooltip("적 총알 속도")] public float bSpeed = 8f; 
+    [Tooltip("적 총알 발사간격")] public float fireRate = 0.5f;
     float nextFireTime;
 
     [Header("난사")]
-    public int bCount = 8; //한번에 발사할 총알 갯수
-    public float maxAngle = 30f; //중심선에서 최대 퍼짐 각도 
-
+    [Tooltip("적이 발사할 총알갯수")] public int bCount = 8;
+    [Tooltip("적 총알이 중심선에서 최대 퍼짐각도")] public float maxAngle = 30f; 
+   
     [Header("이동")]
-    public float moveSpeed = 1f; //적 왼쪽으로 이동속도
-    public float lifeTime = 10f; //일정 시간 후 자동파괴 (화면 밖으로 나갈때 파괴)
+    [Tooltip("적 왼쪽으로 이동속도")] public float moveSpeed = 1f;
+    [Tooltip("적 자동파괴시간")] public float lifeTime = 10f; 
+    
 
     // Start is called before the first frame update
     void Start()
@@ -36,7 +37,7 @@ public class Enemy : MonoBehaviour
         transform.Translate(Vector2.left * moveSpeed * Time.deltaTime);
 
         //발사간격체크
-        if (Time.time > nextFireTime) //근데 맨첨값이 설정이 안되어있는데 제대로 가동이 되는이유?
+        if (Time.time > nextFireTime) //근데 맨첨값이 설정이 안되어있는데 제대로 가동이 되는이유? = 자동 0
         {
             ScatterShot();
             nextFireTime = Time.time + fireRate;

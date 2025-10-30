@@ -6,16 +6,16 @@ using UnityEngine;
 public class BalloonMove : MonoBehaviour
 {
     [Header("상승 설정")]
-    public float ascentForce = 2f; //올라가는 힘
-    public float maxAscent = 5f; //누르고 있을시 최대속도
+    [Tooltip("상승 힘")] public float ascentForce = 2f;
+    [Tooltip("키 눌린상태에서 최대속도")] public float maxAscent = 5f;
 
     [Header("하강 설정")]
-    public float weakGravity = 0.1f; //w키를 안누를때 받는 중력의 힘
-    public float normalGravity = 0.5f; //최대 중력
+    [Tooltip("w키를 안누를때 받는 중력")] public float weakGravity = 0.1f;
+    [Tooltip("안누를때 받는 최대 중력")] public float normalGravity = 0.5f;
 
     [Header("높이 한계 설정")] // 높이 한계를 설정하는 변수들
-    public float topLimitY = 10f; // 최대 상승 높이 (Y 좌표)
-    public float bottomLimitY = -5f; // 최소 하강 높이 (Y 좌표)
+    [Tooltip("벌룬 최대 상승 높이")] public float topLimitY = 10f;
+    [Tooltip("벌룬 최소 하강 높이")] public float bottomLimitY = -5f; 
 
     private Rigidbody2D rb;
 
@@ -25,7 +25,6 @@ public class BalloonMove : MonoBehaviour
 
         if (rb == null)
         {
-            Debug.LogError("BalloonMove 스크립트는 Rigidbody2D 컴포넌트를 필요로 합니다!");
             enabled = false; //이 스크립트를 꺼버림
         }
         else

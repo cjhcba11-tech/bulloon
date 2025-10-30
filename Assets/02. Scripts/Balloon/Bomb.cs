@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Bomb : MonoBehaviour
 {
-    public float lifetime = 5f; // 폭탄이 자동으로 사라질 시간
+    [Tooltip("폭탄이 자동으로 사라지는 시간")] public float lifetime = 5f;
 
     void Start()
     {
@@ -13,7 +13,7 @@ public class Bomb : MonoBehaviour
         Destroy(gameObject, lifetime);
     }
 
-    // 다른 오브젝트와 충돌했을 때 (옵션)
+    // 다른 오브젝트와 충돌했을 때 
     void OnCollisionEnter2D(Collision2D collision)
     {
         // 예: 지면("Ground" 태그를 가진 오브젝트)에 닿으면 폭발 등의 처리를 할 수 있습니다.
