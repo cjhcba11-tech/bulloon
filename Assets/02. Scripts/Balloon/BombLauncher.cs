@@ -7,7 +7,7 @@ using UnityEngine.UI; // UI 요소를 사용하려면 이 네임스페이스가 필요합니다.
 public class BombLauncher : MonoBehaviour
 {
     [Header("발사 설정")]
-    public GameObject bombPrefab; // 발사할 폭탄 프리팹 (Inspector에서 할당)
+    public GameObject bombPrefab; // 발사할 폭탄 프리팹 
     public Transform launchPoint; // 폭탄이 생성될 위치 (Optional: 없으면 이 스크립트가 붙은 오브젝트 위치 사용)
     public float minLaunchForce = 5f; // 최소 발사 힘
     public float maxLaunchForce = 20f; // 최대 발사 힘

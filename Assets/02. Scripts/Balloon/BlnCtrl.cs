@@ -25,13 +25,13 @@ public class BlnCtrl : MonoBehaviour
         {
             // W키를 누르는 동안 충전 이미지로 교체
             sr.sprite = cSprite;
-            // ... 게이지 충전 로직 ...
+            
         }
         else if (Input.GetKeyUp(KeyCode.W))
         {
             // W키를 떼면 기본 이미지로 복귀
             sr.sprite = dSprite;
-            // ... 발사 로직 ...
+            
         }
     }
 }

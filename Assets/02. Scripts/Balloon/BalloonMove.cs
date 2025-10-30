@@ -21,17 +21,16 @@ public class BalloonMove : MonoBehaviour
 
     void Start()
     {
-        // Rigidbody2D 컴포넌트를 가져옵니다. (열기구 움직임에 필수)
         rb = GetComponent<Rigidbody2D>();
 
         if (rb == null)
         {
             Debug.LogError("BalloonMove 스크립트는 Rigidbody2D 컴포넌트를 필요로 합니다!");
-            enabled = false;
+            enabled = false; //이 스크립트를 꺼버림
         }
         else
         {
-            // 시작 시 약한 중력으로 설정하여 천천히 하강하도록 합니다.
+            // 시작 시 약한 중력으로 설정하여 천천히 하강
             rb.gravityScale = weakGravity;
         }
     }
