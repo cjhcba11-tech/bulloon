@@ -185,3 +185,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifetime: 5
   expFab: {fileID: 538078426911957470, guid: d3647d39ed4c5bb4d9528efde78df78f, type: 3}
+  rad: 8
+  dmg: 50
+  eLayer:
+    serializedVersion: 2
+    m_Bits: 1024

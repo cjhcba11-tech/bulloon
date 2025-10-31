@@ -7,8 +7,9 @@ public class Enemy : MonoBehaviour
 {
     [Header("발사")]
     [Tooltip("적 총알 프리팹")] public GameObject bPre;
-    [Tooltip("적 총알 속도")] public float bSpeed = 8f; 
-    [Tooltip("적 총알 발사간격")] public float fireRate = 0.5f;
+    [Tooltip("총알속도")] public float bSpeed = 8f; 
+    [Tooltip("발사간격")] public float fireRate = 0.5f;
+    [Tooltip("발사각도 0:수평 90:수직")] public float shootA = 45f;
     float nextFireTime;
 
     [Header("난사")]
@@ -27,7 +28,7 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject, lifeTime);
 
         //첫발도 값 초기화 (시작 후 약간의 딜레이)
-        nextFireTime = Time.time + fireRate;
+        //nextFireTime = Time.time + fireRate;
     }
 
     // Update is called once per frame
@@ -53,10 +54,13 @@ public class Enemy : MonoBehaviour
         for (int i = 0; i < bCount; i++)
         {
             //랜덤 각도 계산 (-변수부터 +변수까지)<위로 발사하게 조정>
-            float randomAngle = Random.Range(-maxAngle-22f, maxAngle-22f);
+            float randomA = Random.Range(-maxAngle, maxAngle);
 
-            //방향 벡터 회전 (z축을 중심으로 회전) 180f는 왼쪽을 바라보도록 
-            Quaternion rotation = Quaternion.Euler(0,0,randomAngle );
+            //최종 각도 계산
+            float totalA = shootA + randomA - 77f; //180f 넣으면 뒤로 쏨
+
+            //방향 벡터 회전 (z축을 중심으로 회전)
+            Quaternion rotation = Quaternion.Euler(0,0,totalA);
             
             //회전하는 최종 발사 방향 
             Vector2 finalDir = rotation * baseDir;  
