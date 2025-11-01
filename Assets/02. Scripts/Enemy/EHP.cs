@@ -10,7 +10,13 @@ public class EHP : MonoBehaviour
     [Tooltip("피격시 빨간색 시간")] public float hitDur = 1.0f;
 
     SpriteRenderer sr; //스프라이트 랜더러 컴포넌트 참조
-    Color oriC; //원래 색상 저장용 (오리지날 칼라)                       
+    Color oriC; //원래 색상 저장용 (오리지날 칼라)
+
+    [Header("자원드롭 설정")]
+    [Tooltip("드롭할 아이템상자 프리팹")] public GameObject boxPre;
+    [Tooltip("상자가 튀어오르는 힘")] public float boxF = 5f;
+    [Tooltip("상자 드롭 확률")] public int dropC = 50;
+
     
     // Start is called before the first frame update
     void Start()
@@ -51,7 +57,20 @@ public class EHP : MonoBehaviour
     }
     void Die()
     {
+        int chance = Random.Range(0, 100); //0~100 난수
 
-        Destroy(gameObject); 
+        if(boxPre  != null && chance < dropC)
+        {
+            Instantiate(boxPre, transform.position, Quaternion.identity); //파괴되는 위치에 상자 생성
+
+            //상자 생성시 리지드바디가 있으면 약간 위로 튀어나오는 연출가능(적이 내뱉는 느낌)
+            Rigidbody2D boxRB = boxPre.GetComponent<Rigidbody2D>(); 
+
+            //위로 박스에프 힘만큼 순간적인 충격을 줌 
+            if(boxRB != null) {   boxRB.AddForce(Vector2.up * boxF, ForceMode2D.Impulse);  }
+
+        }
+
+        Destroy(gameObject); //적 파괴
     }
 }

@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3803747448398213170}
   - component: {fileID: 2586201713867398867}
+  - component: {fileID: -680090028220939494}
   - component: {fileID: 4502061808398632455}
   - component: {fileID: 4409190493020376330}
-  - component: {fileID: -680090028220939494}
   m_Layer: 10
   m_Name: Canon
   m_TagString: Enemy
@@ -87,41 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4502061808398632455
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 95409430023206801}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a00fc561f088d54db726c3a0253c1ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bPre: {fileID: 8084953858552101473, guid: c828e0a434b5eae40be2b7a8f91b0553, type: 3}
-  bSpeed: 12
-  fireRate: 2
-  shootA: 45
-  bCount: 3
-  maxAngle: 30
-  moveSpeed: 5
-  lifeTime: 9
---- !u!114 &4409190493020376330
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 95409430023206801}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e926225fc417c1b4bab8014c2e8d566c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHP: 100
-  curHP: 100
-  hitDur: 1
 --- !u!61 &-680090028220939494
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -167,3 +132,41 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.0502393, y: 2.4}
   m_EdgeRadius: 0
+--- !u!114 &4502061808398632455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 95409430023206801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a00fc561f088d54db726c3a0253c1ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bPre: {fileID: 8084953858552101473, guid: c828e0a434b5eae40be2b7a8f91b0553, type: 3}
+  bSpeed: 12
+  fireRate: 2
+  shootA: 45
+  bCount: 3
+  maxAngle: 30
+  moveSpeed: 5
+  lifeTime: 9
+--- !u!114 &4409190493020376330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 95409430023206801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e926225fc417c1b4bab8014c2e8d566c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 100
+  curHP: 100
+  hitDur: 1
+  boxPre: {fileID: 1023469404803782786, guid: 7c9a29a2430468a4ebaba4a818910ee0, type: 3}
+  boxF: 5
+  dropC: 50

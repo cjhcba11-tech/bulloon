@@ -708,11 +708,11 @@ RectTransform:
   - {fileID: 1503072435}
   m_Father: {fileID: 1142979230}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -201, y: 127.8}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 7, y: -7}
   m_SizeDelta: {x: 160, y: 20}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 1}
 --- !u!114 &592897526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1006,7 +1006,7 @@ MonoBehaviour:
   maxAscent: 5
   weakGravity: 0.1
   normalGravity: 0.5
-  topLimitY: 10
+  topLimitY: 9
   bottomLimitY: -5
 --- !u!114 &730235453
 MonoBehaviour:
@@ -1054,8 +1054,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1.68, y: 2.14}
+  m_Offset: {x: -0.11847242, y: 0.057368923}
+  m_Size: {x: 1.278226, y: 2.0252616}
   m_Direction: 0
 --- !u!114 &730235455
 MonoBehaviour:

@@ -122,6 +122,9 @@ MonoBehaviour:
   maxHP: 30
   curHP: 30
   hitDur: 1
+  boxPre: {fileID: 6284180229971832209, guid: fcb0262b602aec3418372b018c015380, type: 3}
+  boxF: 5
+  dropC: 80
 --- !u!61 &7470386358802246758
 BoxCollider2D:
   m_ObjectHideFlags: 0
