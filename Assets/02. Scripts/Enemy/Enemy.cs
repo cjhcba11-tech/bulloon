@@ -57,7 +57,7 @@ public class Enemy : MonoBehaviour
             float randomA = Random.Range(-maxAngle, maxAngle);
 
             //최종 각도 계산
-            float totalA = shootA + randomA - 77f; //180f 넣으면 뒤로 쏨
+            float totalA = shootA + randomA - 80f; //180f 넣으면 뒤로 쏨
 
             //방향 벡터 회전 (z축을 중심으로 회전)
             Quaternion rotation = Quaternion.Euler(0,0,totalA);

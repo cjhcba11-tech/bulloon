@@ -104,7 +104,7 @@ MonoBehaviour:
   fireRate: 1
   shootA: 45
   bCount: 5
-  maxAngle: 30
+  maxAngle: 20
   moveSpeed: 5
   lifeTime: 9
 --- !u!114 &2084675423727547068
