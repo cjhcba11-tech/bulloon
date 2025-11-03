@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - EBullet
   - EBullet5
+  - Box
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - Untagged
   - Bomb
   - Enemy
-  - 
+  - Box
   - 
   - 
   - 
