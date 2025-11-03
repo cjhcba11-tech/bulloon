@@ -33,33 +33,20 @@ public class Box : MonoBehaviour
         transform.Translate(Vector2.left * movsS * Time.deltaTime, Space.World);
     }
 
-    //void OnMouseDown() //마우스로 클릭했을때 호출되는 내장함수 (상자열기) - 범위열기라서 필요없음
-    //{
-    //    if (!isOpen && anim != null)
-    //    {
-    //        isOpen = true;
-
-    //        // 애니메이션 트리거/파라미터 설정 (자동재생방지)
-    //        anim.SetTrigger("Open");
-
-    //        //GameManager.Instance.GetITem(); //아이템 획득을 게임매니저 로직에서 가져와 호출
-
-    //        Destroy(gameObject, 1f); //애니 재생시간 후 파괴하게 함 
-    //    }
-    //}
-
     public void OpenBox()
     {
         if (!isOpen && anim != null)
         {
             isOpen = true;
             anim.SetTrigger("Open"); //애니메이션 파라미터 설정
-                                     //
+
+            if (GM.instance != null) //아이템획득
+            {
+                GM.instance.UseHand(); //손(박스수집) 사용
+                //GM.instance.GetItem(1); //획득갯수 재료 수집은 좀 있다 내부만들고
+            }
+
             Destroy(gameObject, 1f); //애니 재생시간 후 파괴하게 함
-        }
-        else
-        {
-            Debug.Log("상자가 이미 열린상태 or 애니메이션이 없습니다.");
         }
     }
 }

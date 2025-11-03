@@ -40,7 +40,8 @@ public class BombLauncher : MonoBehaviour
     void Update()
     {
         // 1. 게이지 충전 시작: 스페이스바를 누르는 순간
-        if (Input.GetKeyDown(KeyCode.Space))
+        // GM 오브젝트가 없거나 또는 폭탄 수량이 남아있을때 충전을 허용 
+        if (Input.GetKeyDown(KeyCode.Space) && (GM.instance == null || GM.instance.bombC > 0))
         {
             isCharging = true;
             currentLaunchForce = minLaunchForce;
@@ -77,25 +78,28 @@ public class BombLauncher : MonoBehaviour
 
     void LaunchBomb()
     {
-        // 1. 폭탄 생성
-        GameObject bombInstance = Instantiate(bombPrefab, launchPoint.position, launchPoint.rotation);
-
-        // 2. Rigidbody2D 컴포넌트 가져오기
-        Rigidbody2D rb = bombInstance.GetComponent<Rigidbody2D>();
-
-        if (rb != null)
+        if (GM.instance != null && GM.instance.UseBomb()) //폭탄 자원이 있는지 확인
         {
-            // 3. 발사 힘 적용
-            // 여기서는 열기구의 오른쪽(transform.right)으로 수평 발사한다고 가정합니다.
-            // 만약 다른 각도로 발사하고 싶다면 Vector2.right 대신 다른 방향 벡터를 사용하세요.
-            Vector2 launchDirection = transform.right; // 예: 열기구가 바라보는 방향
+            // 폭탄 생성
+            GameObject bombInstance = Instantiate(bombPrefab, launchPoint.position, launchPoint.rotation);
 
-            rb.AddForce(launchDirection * currentLaunchForce, ForceMode2D.Impulse);
-            // Impulse(충격량) 모드를 사용하여 즉각적인 힘을 적용합니다.
+            Rigidbody2D rb = bombInstance.GetComponent<Rigidbody2D>();
+
+            if (rb != null)
+            {
+                // 발사 힘 적용
+                // 열기구의 오른쪽(transform.right)으로 수평 발사
+                Vector2 launchDirection = transform.right;
+
+                rb.AddForce(launchDirection * currentLaunchForce, ForceMode2D.Impulse);
+            }
+
         }
-        else
-        {
-            Debug.LogError("폭탄 프리팹에 Rigidbody2D 컴포넌트가 없습니다!");
-        }
+
+        else if (GM.instance != null && !GM.instance.UseBomb()) {   return;  } //폭탄이 없으면 종료 
+
+
+
+
     }
 }
