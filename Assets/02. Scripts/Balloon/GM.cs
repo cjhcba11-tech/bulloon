@@ -63,6 +63,12 @@ public class GM : MonoBehaviour
         return false; //사용못함(수량부족)
     }
 
+    public void AddHand(int amount) //클릭으로 상자를 열지 못했을때 사용된 핸드를 다시 반환
+    {
+        handC += amount;
+        UpdateUI();
+    }
+
     public void GetItem(int a) //아이템 획득
     {
         handC += a;

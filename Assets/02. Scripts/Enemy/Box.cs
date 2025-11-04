@@ -40,11 +40,11 @@ public class Box : MonoBehaviour
             isOpen = true;
             anim.SetTrigger("Open"); //애니메이션 파라미터 설정
 
-            if (GM.instance != null) //아이템획득
-            {
-                GM.instance.UseHand(); //손(박스수집) 사용
-                //GM.instance.GetItem(1); //획득갯수 재료 수집은 좀 있다 내부만들고
-            }
+            //if (GM.instance != null) //아이템획득 (중복 획득때문에 삭제)
+            //{
+            //    GM.instance.UseHand(); //손(박스수집) 사용
+            //    //GM.instance.GetItem(1); //획득갯수 재료 수집은 좀 있다 내부만들고
+            //}
 
             Destroy(gameObject, 1f); //애니 재생시간 후 파괴하게 함
         }
