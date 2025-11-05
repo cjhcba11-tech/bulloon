@@ -18,6 +18,10 @@ public class GM : MonoBehaviour
     [SerializeField, Tooltip("폭탄 표시할 UI")] TextMeshProUGUI bombT; //Text
     [SerializeField, Tooltip("핸드 표시할 UI")] TextMeshProUGUI handT;
 
+    [Header("게임 상태")]
+    [SerializeField, Tooltip("현재 일시정지 상태인가")] bool isPause;
+
+
 
     private void Awake()
     {
@@ -77,15 +81,15 @@ public class GM : MonoBehaviour
 
     void UpdateUI() //UI업데이트
     {
-        if(bombT != null)
-        {
-            bombT.text = "" + bombC; //정수를 문자열로 변환해 표시
-        }
-        
-        if(handT !=  null)
-        {
-            handT.text = "" + handC; 
+        if(bombT != null) {  bombT.text = "" + bombC; }  //정수를 문자열로 변환해 표시
+        if(handT != null) {  handT.text = "" + handC; }
+    }
 
-        }
+    public void TgPause() //
+    {
+        isPause = !isPause; //상태 반전
+        
+        if(isPause) {  Time.timeScale = 0f; } //일시정지 상태일경우 시간의 흐름을 멈춘다.
+        else {  Time.timeScale = 1f; } //게임 재개
     }
 }
