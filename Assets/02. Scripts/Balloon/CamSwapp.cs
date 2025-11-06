@@ -7,13 +7,19 @@ public class CamSwapp : MonoBehaviour
     [Header("카메라")]
     [SerializeField, Tooltip("기본 화면 카메라")] Camera mainCam;
     [SerializeField, Tooltip("내부 화면 카메라")] Camera insideCam;
-    
-    
+
+    [Header("UI 설정")]
+    [SerializeField, Tooltip("내부카메라전용 UI")] GameObject inUI;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
-        if(mainCam == null) {   mainCam = Camera.main;    } //태그가 MainCamera인 카메라 찾기
-        if(insideCam != null) {     insideCam.enabled = false;      } //인사이드 카메라는 꺼져있어야 함
+        if (mainCam == null) { mainCam = Camera.main; } //태그가 MainCamera인 카메라 찾기
+        if (insideCam != null) { insideCam.enabled = false; } //인사이드 카메라는 꺼져있어야 함
+
+        if (inUI != null) { inUI.SetActive(false); } //내부 UI 끄기
     }
 
     // Update is called once per frame
@@ -35,6 +41,8 @@ public class CamSwapp : MonoBehaviour
             mainCam.enabled = false;
             insideCam.gameObject.SetActive(true); //게임 오브젝트 활성화(보장) 
             insideCam.enabled = true; //메인끄고 인사이드 켬
+
+            if(inUI != null) { inUI.SetActive(true); } //내부UI 활성화
         }
 
         else
@@ -42,6 +50,8 @@ public class CamSwapp : MonoBehaviour
             mainCam.enabled = true;
             insideCam.gameObject.SetActive(false); //게임 오브젝트 비활성화
             insideCam.enabled = false; //반대
+
+            if(inUI != null) { inUI.SetActive(false); } //내부UI 끄기
         }
 
         if(GM.instance != null) { GM.instance.TgPause(); } //GM의 일시정지 상태 호출
