@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/01. Scenes/DAY18.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/01. Scenes/mini.unity
+    path: Assets/01. Scenes/Mini.unity
     guid: 6beebbd69f1574b42b9a771352704f82
   - enabled: 1
     path: Assets/01. Scenes/GameOver.unity
