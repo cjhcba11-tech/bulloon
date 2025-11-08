@@ -6,7 +6,7 @@ using Unity.VisualScripting;
 
 public class CrewM : MonoBehaviour
 {
-    [SerializeField, Tooltip("싱글톤 인스턴스")] static CrewM instance;
+    [Tooltip("싱글톤 인스턴스")] public static CrewM instance;
 
     const int MAX_CREW = 3; //역할별 최대 배치가능 선원 수 
 
@@ -15,10 +15,10 @@ public class CrewM : MonoBehaviour
     [SerializeField, Tooltip("현재 배치할 수 있는 선원 수")] int avaCrew = 2;
 
     [Header("배치된 선원")]
-    [SerializeField, Tooltip("운전")] int steerCrew = 0;
-    [SerializeField, Tooltip("수리")] int repairCrew = 0;
-    [SerializeField, Tooltip("포수")] int canonCrew = 0;
-    [SerializeField, Tooltip("제조")] int craftCrew = 0;
+    [Tooltip("운전")] public int steerCrew = 0;
+    [Tooltip("수리")] public int repairCrew = 0;
+    [Tooltip("포수")] public int canonCrew = 0;
+    [Tooltip("제조")] public int craftCrew = 0;
 
     [Header("UI 연결")]
     [SerializeField, Tooltip("남은 선원수 UI텍스트")] TextMeshProUGUI avaCrewText;
@@ -159,7 +159,7 @@ public class CrewM : MonoBehaviour
         }
     }
 
-    int GetRole(CrewRole role) //특정 역할에 몇명이 배치되어있는지 값 반환 
+    public int GetRole(CrewRole role) //특정 역할에 몇명이 배치되어있는지 값 반환 
     {
         switch (role)
         {

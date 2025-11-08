@@ -2974,6 +2974,8 @@ MonoBehaviour:
   eBullTag: EBullet
   eBullTag5: EBullet5
   hpSlider: {fileID: 592897526}
+  baseRepair: 10
+  repairInter: 1
 --- !u!114 &730235456
 MonoBehaviour:
   m_ObjectHideFlags: 0

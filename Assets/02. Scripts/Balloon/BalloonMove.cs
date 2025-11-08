@@ -15,9 +15,12 @@ public class BalloonMove : MonoBehaviour
 
     [Header("높이 한계 설정")] // 높이 한계를 설정하는 변수들
     [Tooltip("벌룬 최대 상승 높이")] public float topLimitY = 10f;
-    [Tooltip("벌룬 최소 하강 높이")] public float bottomLimitY = -5f; 
+    [Tooltip("벌룬 최소 하강 높이")] public float bottomLimitY = -5f;
 
-    private Rigidbody2D rb;
+    
+
+    Rigidbody2D rb;
+    int curSteerCrew = 0; //현재 배치된 운전 선원 
 
     void Start()
     {
@@ -42,14 +45,19 @@ public class BalloonMove : MonoBehaviour
         // 2. 상승 입력 감지
         if (Input.GetKey(KeyCode.W))
         {
-            // W 키를 누르고 있으면 Ascend 함수를 호출합니다.
-            Ascend();
+            if (CanAscend()) { Ascend(); }// W 키를 누르고 있으면 Ascend 함수를 호출합니다.(운전 선원이 배치되었는지 확인되면 상승 )
+            else { ApplyWeakGravity(); }  // W 키를 떼었을 때 ApplyWeakGravity 함수를 호출합니다.
         }
-        else
-        {
-            // W 키를 떼었을 때 ApplyWeakGravity 함수를 호출합니다.
-            ApplyWeakGravity();
-        }
+    }
+
+    bool CanAscend()
+    {
+        //CrewM crewManager = CrewM.instance; 
+
+        if(CrewM.instance == null) { return false; }
+
+        //크루메니져에서 운전에 1명이상 배치되었는지 확인 
+        return CrewM.instance.GetRole(CrewM.CrewRole.Steer) > 0;
     }
 
     void OnCollisionStay2D(Collision2D coll)
