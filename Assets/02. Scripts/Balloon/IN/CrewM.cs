@@ -50,15 +50,48 @@ public class CrewM : MonoBehaviour
         
     }
 
+    public void ASteer() { Asg(CrewRole.Steer); }   //UI버튼에서 온클릭으로 연결할 함수
+    public void USteer() { Unasg(CrewRole.Steer); }
+    public void ARepair() { Asg(CrewRole.Repair); }
+    public void URepair() { Unasg(CrewRole.Repair); }
+    public void ACanon() { Asg(CrewRole.Canon); }
+    public void UCanon() { Unasg(CrewRole.Canon); }
+    public void ACraft() { Asg(CrewRole.Craft); }
+    public void UCraft() { Unasg(CrewRole.Craft); }
+
+
+    public void Asg(CrewRole role) //선원 배치 증가 
+    {
+        if(avaCrew <=  0) { return;  } //배치 가능한 선원이 없으면 종료
+        if(GetRole(role) >= MAX_CREW) { return; } //역할마다 최대 배치 인원수랑 같거나 높으면 종료
+
+        avaCrew--; //배치가능 선원수 감소
+        IncRole(role); //해당 역할의 배치 인원 증가 
+
+        UpdateUI(); //선원 이미지 업데이트
+    }
+
+    public void Unasg(CrewRole role) //선원 배치 빼기
+    {
+        if(GetRole(role) <= 0) { return; } //배치 가능 성원
+
+        avaCrew++; //배치가능 선원수 증가
+        DecRole(role);
+        UpdateUI(); //선원 이미지 업데이트
+
+    }
+
     void UpdateUI()
     {
-        if(avaCrewText != null) { avaCrewText.text = "남은 선원" + avaCrew.ToString(); } //남은 선원 텍스트 업데이트
+        if(avaCrewText != null) { avaCrewText.text = "남은 선원 :" + avaCrew.ToString(); } //남은 선원 텍스트 업데이트
 
         UpIco(CrewRole.Steer, steerCrew); //선원 이미지 업데이트 
         UpIco(CrewRole.Repair, repairCrew);
         UpIco(CrewRole.Canon, canonCrew);
         UpIco(CrewRole.Craft, craftCrew);
     }
+
+
 
     void UpIco(CrewRole role, int count) //선원 이미지 업데이트를 진짜로 하는곳
     {
