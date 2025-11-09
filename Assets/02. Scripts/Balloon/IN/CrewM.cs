@@ -37,6 +37,9 @@ public class CrewM : MonoBehaviour
     [SerializeField, Tooltip("재료B")] int matB = 0;
     [SerializeField, Tooltip("재료C")] int matC = 0;
 
+    [Header("제조 타이머")]
+    [SerializeField, Tooltip("제조선원 1명당 자동제작 간격(초)")] float Interval = 5f; //5초마다 제작
+    float timeLast = 0f; //제작후 경과시간
 
     public enum CrewRole { Steer, Repair, Canon, Craft  }; //선원 역할을 쉽게 식별하기 위해 (열거형)사용
 
@@ -57,7 +60,7 @@ public class CrewM : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        AutoCraft(); //자동 제작
     }
 
     public void AMater(string materName, int count) //폭탄 재료 증가(상자 열면)
@@ -72,6 +75,41 @@ public class CrewM : MonoBehaviour
         }
 
         UpdateUI(); //재료 변경될때 UI업데이트 
+    }
+
+
+    void AutoCraft()
+    {
+        if (craftCrew <= 0) { timeLast = 0f; return; } //제조 선원 0명인지 확인 + 선원없으면 타이머 리셋
+        timeLast += Time.deltaTime; //타이머 업데이트
+
+        if (timeLast >= Interval) //설정된 간격(5초)에 도달했는지
+        {
+            if (CraftItem()) { timeLast = 0f; } //제작성공 후 타이머 리셋
+            else { timeLast -= Interval;  } //제작실패 : 다음 틱에 다시 시도하도록 시간 차감
+        }
+
+    }
+    public bool CraftItem()
+    {
+        const int required = 1; // 요구 재료 수량 (1,2,3재료 모두 각1개씩)
+        
+        if(GM.instance == null) { return false; }
+
+        if (craftCrew <= 0) { return false; }//제조 선원 0명인지 확인
+
+        if (matA <= required || matB <= required || matC <= required) { return false; } //각재료 1개이상인지 확인
+
+
+        matA -= required; //각 재료 1개씩 소모
+        matB -= required; 
+        matC -= required;
+
+        GM.instance.AddBomb(1); //게임매니저의 폭탄,핸드 수량 1개씩 증가
+        GM.instance.AddHand(1);
+
+        UpdateUI();
+        return true;
     }
 
     public void ASteer() { Asg(CrewRole.Steer); }   //UI버튼에서 온클릭으로 연결할 함수

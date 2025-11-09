@@ -11,8 +11,8 @@ public class GM : MonoBehaviour
     public static GM instance; //싱글론 패턴 //유일
 
     [Header("자원")]
-    [Tooltip("남은 폭탄 갯수")] public int bombC = 5; //Count
-    [Tooltip("남은 핸드 갯수")] public int handC = 5;
+    [Tooltip("남은 폭탄 갯수")] public int bombC = 10; //Count
+    [Tooltip("남은 핸드 갯수")] public int handC = 10;
 
     [Header("UI연결")]
     [SerializeField, Tooltip("폭탄 표시할 UI")] TextMeshProUGUI bombT; //Text
@@ -67,8 +67,15 @@ public class GM : MonoBehaviour
         return false; //사용못함(수량부족)
     }
 
-    public void AddHand(int amount) //클릭으로 상자를 열지 못했을때 사용된 핸드를 다시 반환
+    public void AddBomb(int amount) //폭탄 증가 (제조)
     {
+        if (amount <= 0) { return; }
+        bombC += amount;
+        UpdateUI();
+    }
+    public void AddHand(int amount) //클릭으로 상자를 열지 못했을때 사용된 핸드를 다시 반환 + 제조로 획득
+    {
+        if (amount <= 0) { return; }
         handC += amount;
         UpdateUI();
     }

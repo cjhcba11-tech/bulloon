@@ -2717,8 +2717,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22e3d7e0ccb077b4fbe165a5ceaab3e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bombC: 5
-  handC: 5
+  bombC: 10
+  handC: 10
   bombT: {fileID: 1496272520}
   handT: {fileID: 1243546322}
   isPause: 0
@@ -2751,7 +2751,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCam: {fileID: 2047096143}
   insideCam: {fileID: 915623559}
-  inUI: {fileID: 0}
+  inUI: {fileID: 915623557}
 --- !u!1 &722016375
 GameObject:
   m_ObjectHideFlags: 0

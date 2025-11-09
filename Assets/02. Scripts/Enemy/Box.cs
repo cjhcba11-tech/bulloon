@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Build.Content;
 using UnityEngine;
+using TMPro;
 
 public class Box : MonoBehaviour
 {
@@ -15,9 +16,11 @@ public class Box : MonoBehaviour
 
     [Header("드랍")]
     [SerializeField, Tooltip("드랍 재료의 종류")] List<MaterType> droppMater = new List<MaterType>();
-    
     [SerializeField, Tooltip("드랍 재료수 min")] int minDrop = 1;
     [SerializeField, Tooltip("드랍 재료수 max")] int maxDrop = 3;
+
+  
+
 
     public enum MaterType { A,B,C } //드랍 재료 종류 열거형으로 설정  
 
