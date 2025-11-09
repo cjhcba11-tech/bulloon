@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8539846901647464534}
   - component: {fileID: 5830554765799324663}
+  - component: {fileID: 3141833658742117034}
+  - component: {fileID: 2276455470381704014}
   m_Layer: 0
   m_Name: Princess
   m_TagString: Untagged
@@ -84,3 +86,41 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3141833658742117034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2162783807426246342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a00fc561f088d54db726c3a0253c1ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bPre: {fileID: 1556609131484105925, guid: 8e7058377223d2d48883b6fa73008148, type: 3}
+  bSpeed: 15
+  fireRate: 2
+  shootA: 45
+  bCount: 1
+  maxAngle: 20
+  moveSpeed: 3
+  lifeTime: 16
+--- !u!114 &2276455470381704014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2162783807426246342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e926225fc417c1b4bab8014c2e8d566c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 1
+  curHP: 0
+  hitDur: 1
+  boxPre: {fileID: 1023469404803782786, guid: 7c9a29a2430468a4ebaba4a818910ee0, type: 3}
+  boxF: 5
+  dropC: 99

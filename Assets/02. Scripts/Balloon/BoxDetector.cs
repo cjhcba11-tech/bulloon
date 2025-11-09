@@ -67,10 +67,10 @@ public class BoxDetector : MonoBehaviour
   
 
     }
-    void OnDrawGizmosSelected() //감지 반경을 기즈모 
-    {
-        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawWireSphere(mousePos, rad);
-    }
+    //void OnDrawGizmosSelected() //감지 반경을 기즈모 
+    //{
+    //    Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    //    Gizmos.color = Color.cyan;
+    //    Gizmos.DrawWireSphere(mousePos, rad);
+    //}
 }

@@ -13,10 +13,12 @@ public class GM : MonoBehaviour
     [Header("자원")]
     [Tooltip("남은 폭탄 갯수")] public int bombC = 10; //Count
     [Tooltip("남은 핸드 갯수")] public int handC = 10;
+    [Tooltip("골드 갯수")] public int goldC = 0;
 
     [Header("UI연결")]
     [SerializeField, Tooltip("폭탄 표시할 UI")] TextMeshProUGUI bombT; //Text
     [SerializeField, Tooltip("핸드 표시할 UI")] TextMeshProUGUI handT;
+    [SerializeField, Tooltip("골드 표시할 UI")] TextMeshProUGUI goldT;
 
     [Header("게임 상태")]
     [Tooltip("현재 일시정지 상태인가")] public bool isPause;
@@ -46,6 +48,7 @@ public class GM : MonoBehaviour
         
     }
 
+
     public bool UseBomb() //폭탄 사용
     {
         if(bombC > 0)
@@ -65,6 +68,12 @@ public class GM : MonoBehaviour
             return true; //사용함
         }
         return false; //사용못함(수량부족)
+    }
+    public void AddGold(int amount)
+    {
+        if (amount <= 0) { return; }
+        goldC += amount;
+        UpdateUI();
     }
 
     public void AddBomb(int amount) //폭탄 증가 (제조)
@@ -90,6 +99,7 @@ public class GM : MonoBehaviour
     {
         if(bombT != null) {  bombT.text = "" + bombC; }  //정수를 문자열로 변환해 표시
         if(handT != null) {  handT.text = "" + handC; }
+        if(goldT != null) {  goldT.text = "" + goldC; }
     }
 
     public void TgPause() //

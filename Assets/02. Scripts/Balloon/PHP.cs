@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI; //UI요소에 필요
 using UnityEngine.SceneManagement; //씬전환에 필요함
+using UnityEngine.UI; //UI요소에 필요
 
 public class PHP : MonoBehaviour
 {
@@ -14,6 +14,7 @@ public class PHP : MonoBehaviour
     [Tooltip("게임오버 씬 이름")] public string gameOverS = "GameOver";
     [Tooltip("적탄환 태그 1데미지")] public string eBullTag = "EBullet";
     [Tooltip("적탄환 태그 5데미지")] public string eBullTag5 = "EBullet5";
+    [Tooltip("적탄환 태그 골드획득")] public string eBullTag2 = "EBullet2";
 
     [Header("UI 연결")]
     [Tooltip("체력게이지 실린더")] public Slider hpSlider;
@@ -76,7 +77,10 @@ public class PHP : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) //적 총알이 열기구에 닿았을때 (충돌감지)
     {
-        if(other.CompareTag(eBullTag)) //충돌한 오브젝트의 태그가 EnemyBullet인지 확인 
+        
+        int rand = Random.Range(1, 6); //골드 랜덤값 1~5
+
+        if (other.CompareTag(eBullTag)) //충돌한 오브젝트의 태그가 EnemyBullet인지 확인 
         {
             Destroy(other.gameObject); //충돌한 총알제거
             TakeD(1); //데미지 받음
@@ -85,6 +89,11 @@ public class PHP : MonoBehaviour
         {
             Destroy(other.gameObject); //충돌한 총알제거
             TakeD(5); //데미지 받음
+        }
+        else if (other.CompareTag(eBullTag2))
+        {
+            Destroy(other.gameObject); //충돌한 총알제거
+            GM.instance.AddGold(rand);//골드 상승
         }
     }
 

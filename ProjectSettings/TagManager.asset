@@ -9,6 +9,7 @@ TagManager:
   - EBullet
   - EBullet5
   - Box
+  - EBullet2
   layers:
   - Default
   - TransparentFX
