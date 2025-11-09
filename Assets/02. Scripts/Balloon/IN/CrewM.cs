@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Unity.VisualScripting;
+using Unity.Collections;
 
 public class CrewM : MonoBehaviour
 {
@@ -28,6 +29,15 @@ public class CrewM : MonoBehaviour
     [SerializeField, Tooltip("포수 선원이미지(최대 3명)")] GameObject[] canonIco = new GameObject[MAX_CREW];
     [SerializeField, Tooltip("제조 선원이미지(최대 3명)")] GameObject[] craftIco = new GameObject[MAX_CREW];
 
+    [Header("제조 자원")]
+    [SerializeField, Tooltip("재료A 개수 텍스트UI")] TextMeshProUGUI matAText;
+    [SerializeField, Tooltip("재료B 개수 텍스트UI")] TextMeshProUGUI matBText;
+    [SerializeField, Tooltip("재료C 개수 텍스트UI")] TextMeshProUGUI matCText;
+    [SerializeField, Tooltip("재료A")] int matA = 0;
+    [SerializeField, Tooltip("재료B")] int matB = 0;
+    [SerializeField, Tooltip("재료C")] int matC = 0;
+
+
     public enum CrewRole { Steer, Repair, Canon, Craft  }; //선원 역할을 쉽게 식별하기 위해 (열거형)사용
 
     private void Awake()
@@ -48,6 +58,20 @@ public class CrewM : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void AMater(string materName, int count) //폭탄 재료 증가(상자 열면)
+    {
+        if (count <= 0) { return; }
+
+        switch(materName.ToUpper()) //문자열로 변경한 열거형을 받아온것
+        {
+            case "A": { matA += count; break; }
+            case "B": { matB += count; break; }
+            case "C": { matC += count; break; }
+        }
+
+        UpdateUI(); //재료 변경될때 UI업데이트 
     }
 
     public void ASteer() { Asg(CrewRole.Steer); }   //UI버튼에서 온클릭으로 연결할 함수
@@ -89,6 +113,10 @@ public class CrewM : MonoBehaviour
         UpIco(CrewRole.Repair, repairCrew);
         UpIco(CrewRole.Canon, canonCrew);
         UpIco(CrewRole.Craft, craftCrew);
+
+        if(matAText != null) { matAText.text = matA.ToString(); } //폭탄 재료 갯수 텍스트 업데이트
+        if(matAText != null) { matBText.text = matB.ToString(); }
+        if(matAText != null) { matCText.text = matC.ToString(); }
     }
 
 

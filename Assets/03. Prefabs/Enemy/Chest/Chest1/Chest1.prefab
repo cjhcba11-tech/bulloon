@@ -123,6 +123,9 @@ MonoBehaviour:
   movsS: 2
   lifeT: 15
   anim: {fileID: 9058703160711535399}
+  droppMater: 0000000001000000
+  minDrop: 0
+  maxDrop: 1
 --- !u!61 &2732853741846596690
 BoxCollider2D:
   m_ObjectHideFlags: 0

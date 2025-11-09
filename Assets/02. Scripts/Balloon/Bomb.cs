@@ -15,6 +15,7 @@ public class Bomb : MonoBehaviour
     [Tooltip("적에게 줄 데미지")] public int dmg = 50;
     [Tooltip("적의 레이어")] public LayerMask eLayer;
 
+    const int CANON_DMG = 50; //포수 1명당 추가데미지
 
     Rigidbody2D rb;
 
@@ -44,6 +45,11 @@ public class Bomb : MonoBehaviour
             Instantiate(expFab, transform.position, Quaternion.identity);
         }
 
+        int crewCount = 0; //포수 배치수
+        
+        if (CrewM.instance != null) { crewCount = CrewM.instance.canonCrew; } //크루매니저에서 포수의 수를 가져옴
+        int finalDmg = dmg + (crewCount * CANON_DMG);
+
         // 현재 위치를 중심으로 rad반경 내의 레이어에 속한 콜라이더 감지
         Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position, rad, eLayer);
 
@@ -52,11 +58,8 @@ public class Bomb : MonoBehaviour
         {
             if(hit.CompareTag("Enemy")) //적체력 스크립트 넣고, 데미지 처리 코드 작성
             {
-                //적을 탐지하면 씬에서 초록색 선을 그립니다.(폭탄범위를 10으로 설정해도 작동이 안되는 현상)
-                Debug.DrawRay(transform.position, hit.transform.position - transform.position, Color.green);
-
                 EHP h = hit.GetComponent<EHP>();
-                if (h != null) {   h.TakeDmg(dmg);  }
+                if (h != null) {   h.TakeDmg(finalDmg);  }
             }
         }
 
