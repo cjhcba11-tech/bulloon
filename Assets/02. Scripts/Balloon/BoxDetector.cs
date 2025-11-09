@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems; //UI클릭 감지를 위해 필요
 
 public class BoxDetector : MonoBehaviour
 {
@@ -19,8 +20,13 @@ public class BoxDetector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(GM.instance != null && GM.instance.isPause) { return; } //내부UI 상태여서 일시정지인지 확인하고 그렇다면 클릭으로 핸드 소모되는걸 멈춤
+
         if(Input.GetMouseButtonDown(0)) //마우스 왼쪽클릭시
         {
+            //UI 위에서 클릭이 발생했다면 상자열기를 실행하지 않고 종료
+            if(EventSystem.current != null && EventSystem.current.IsPointerOverGameObject()) { return; }
+
             OpenBoxA();
         }
     }

@@ -19,7 +19,7 @@ public class GM : MonoBehaviour
     [SerializeField, Tooltip("핸드 표시할 UI")] TextMeshProUGUI handT;
 
     [Header("게임 상태")]
-    [SerializeField, Tooltip("현재 일시정지 상태인가")] bool isPause;
+    [Tooltip("현재 일시정지 상태인가")] public bool isPause;
 
 
 
