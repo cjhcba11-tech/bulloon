@@ -1,7 +1,7 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditorInternal.Profiling.Memory.Experimental;
+
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro; //Text(TMP) »ç¿ë //Text Mesh Pro

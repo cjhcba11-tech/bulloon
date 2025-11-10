@@ -3180,8 +3180,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0ecd913b94aae94da5939ddd4a6ef78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 500
-  curHP: 500
+  maxHP: 200
+  curHP: 200
   gameOverS: GameOver
   eBullTag: EBullet
   eBullTag5: EBullet5
